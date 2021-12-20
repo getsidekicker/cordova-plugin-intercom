@@ -8,6 +8,7 @@
 - (void)registerUnidentifiedUser:(CDVInvokedUrlCommand*)command;
 - (void)logout:(CDVInvokedUrlCommand*)command;
 
+- (void)setApiKeyForAppId:(CDVInvokedUrlCommand*)command;
 - (void)setUserHash:(CDVInvokedUrlCommand*)command;
 
 - (void)updateUser:(CDVInvokedUrlCommand*)command;
@@ -29,7 +30,7 @@
 - (void)setBottomPadding:(CDVInvokedUrlCommand*)command;
 - (void)setInAppMessageVisibility:(CDVInvokedUrlCommand*)command;
 - (void)hideIntercom:(CDVInvokedUrlCommand*)command;
-    
+
 
 - (void)registerForPush:(CDVInvokedUrlCommand*)command;
 

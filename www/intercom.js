@@ -1,110 +1,144 @@
 var intercom = {
-    registerIdentifiedUser: function(options, success, error) {
-        cordova.exec(success, error, 'Intercom', 'registerIdentifiedUser', [options]);
-    },
+  registerIdentifiedUser: function (options, success, error) {
+    cordova.exec(success, error, "Intercom", "registerIdentifiedUser", [
+      options,
+    ]);
+  },
 
-    registerUnidentifiedUser: function(options, success, error) {
-        cordova.exec(success, error, 'Intercom', 'registerUnidentifiedUser', []);
-    },
+  registerUnidentifiedUser: function (options, success, error) {
+    cordova.exec(success, error, "Intercom", "registerUnidentifiedUser", []);
+  },
 
-    reset: function(success, error) {
-        cordova.exec(success, error, 'Intercom', 'logout', []);
-    },
+  reset: function (success, error) {
+    cordova.exec(success, error, "Intercom", "logout", []);
+  },
 
-    logout: function(success, error) {
-        cordova.exec(success, error, 'Intercom', 'logout', []);
-    },
+  logout: function (success, error) {
+    cordova.exec(success, error, "Intercom", "logout", []);
+  },
 
-    setSecureMode: function(secureHash, secureData, success, error) {
-        cordova.exec(success, error, 'Intercom', 'setSecureMode', [secureHash, secureData]);
-    },
+  setSecureMode: function (secureHash, secureData, success, error) {
+    cordova.exec(success, error, "Intercom", "setSecureMode", [
+      secureHash,
+      secureData,
+    ]);
+  },
 
-    setUserHash: function(secureHash, success, error) {
-        cordova.exec(success, error, 'Intercom', 'setUserHash', [secureHash]);
-    },
+  setApiKeyForAppId: function (apiKey, appId, success, error) {
+    cordova.exec(success, error, "Intercom", "setApiKeyForAppId", [
+      apiKey,
+      appId,
+    ]);
+  },
 
-    updateUser: function(attributes, success, error) {
-        cordova.exec(success, error, 'Intercom', 'updateUser', [attributes]);
-    },
+  setUserHash: function (secureHash, success, error) {
+    cordova.exec(success, error, "Intercom", "setUserHash", [secureHash]);
+  },
 
-    logEvent: function(eventName, metaData, success, error) {
-        cordova.exec(success, error, 'Intercom', 'logEvent', [eventName, metaData]);
-    },
+  updateUser: function (attributes, success, error) {
+    cordova.exec(success, error, "Intercom", "updateUser", [attributes]);
+  },
 
-    displayMessenger: function(success, error) {
-        cordova.exec(success, error, 'Intercom', 'displayMessenger', []);
-    },
+  logEvent: function (eventName, metaData, success, error) {
+    cordova.exec(success, error, "Intercom", "logEvent", [eventName, metaData]);
+  },
 
-    displayMessageComposer: function(success, error) {
-        cordova.exec(success, error, 'Intercom', 'displayMessageComposer', []);
-    },
+  displayMessenger: function (success, error) {
+    cordova.exec(success, error, "Intercom", "displayMessenger", []);
+  },
 
-    displayMessageComposerWithInitialMessage: function(initialMessage, success, error) {
-        cordova.exec(success, error, 'Intercom', 'displayMessageComposerWithInitialMessage', [initialMessage]);
-    },
+  displayMessageComposer: function (success, error) {
+    cordova.exec(success, error, "Intercom", "displayMessageComposer", []);
+  },
 
-    displayConversationsList: function(success, error) {
-        cordova.exec(success, error, 'Intercom', 'displayConversationsList', []);
-    },
+  displayMessageComposerWithInitialMessage: function (
+    initialMessage,
+    success,
+    error
+  ) {
+    cordova.exec(
+      success,
+      error,
+      "Intercom",
+      "displayMessageComposerWithInitialMessage",
+      [initialMessage]
+    );
+  },
 
-    displayHelpCenter: function(success, error) {
-        cordova.exec(success, error, 'Intercom', 'displayHelpCenter', []);
-    },
+  displayConversationsList: function (success, error) {
+    cordova.exec(success, error, "Intercom", "displayConversationsList", []);
+  },
 
-    fetchHelpCenterCollections: function(success, error) {
-        cordova.exec(success, error, 'Intercom', 'fetchHelpCenterCollections', []);
-    },
+  displayHelpCenter: function (success, error) {
+    cordova.exec(success, error, "Intercom", "displayHelpCenter", []);
+  },
 
-    searchHelpCenter: function(searchTerm, success, error) {
-        cordova.exec(success, error, 'Intercom', 'searchHelpCenter', [searchTerm]);
-    },
+  fetchHelpCenterCollections: function (success, error) {
+    cordova.exec(success, error, "Intercom", "fetchHelpCenterCollections", []);
+  },
 
-    fetchHelpCenterCollection: function(collectionId, success, error) {
-        cordova.exec(success, error, 'Intercom', 'fetchHelpCenterCollection', [collectionId]);
-    },
+  searchHelpCenter: function (searchTerm, success, error) {
+    cordova.exec(success, error, "Intercom", "searchHelpCenter", [searchTerm]);
+  },
 
-    displayHelpCenterCollections: function(collectionIds, success, error) {
-            cordova.exec(success, error, 'Intercom', 'displayHelpCenterCollections', [collectionIds]);
-    },
+  fetchHelpCenterCollection: function (collectionId, success, error) {
+    cordova.exec(success, error, "Intercom", "fetchHelpCenterCollection", [
+      collectionId,
+    ]);
+  },
 
-    unreadConversationCount: function(success, error) {
-        cordova.exec(success, error, 'Intercom', 'unreadConversationCount', []);
-    },
+  displayHelpCenterCollections: function (collectionIds, success, error) {
+    cordova.exec(success, error, "Intercom", "displayHelpCenterCollections", [
+      collectionIds,
+    ]);
+  },
 
-    VISIBLE : "VISIBLE",
-    GONE    : "GONE",
+  unreadConversationCount: function (success, error) {
+    cordova.exec(success, error, "Intercom", "unreadConversationCount", []);
+  },
 
-    setLauncherVisibility: function(visibility, success, error) {
-        cordova.exec(success, error, 'Intercom', 'setLauncherVisibility', [visibility]);
-    },
+  VISIBLE: "VISIBLE",
+  GONE: "GONE",
 
-    setInAppMessageVisibility: function(visibility, success, error) {
-        cordova.exec(success, error, 'Intercom', 'setInAppMessageVisibility', [visibility]);
-    },
+  setLauncherVisibility: function (visibility, success, error) {
+    cordova.exec(success, error, "Intercom", "setLauncherVisibility", [
+      visibility,
+    ]);
+  },
 
-    hideIntercom: function(success, error) {
-        cordova.exec(success, error, 'Intercom', 'hideIntercom', []);
-    },
+  setInAppMessageVisibility: function (visibility, success, error) {
+    cordova.exec(success, error, "Intercom", "setInAppMessageVisibility", [
+      visibility,
+    ]);
+  },
 
-    registerForPush: function(success, error) {
-        cordova.exec(success, error, 'Intercom', 'registerForPush', []);
-    },
+  hideIntercom: function (success, error) {
+    cordova.exec(success, error, "Intercom", "hideIntercom", []);
+  },
 
-    sendPushTokenToIntercom: function(token, success, error) {
-        cordova.exec(success, error, 'Intercom', 'sendPushTokenToIntercom', [token]);
-    },
+  registerForPush: function (success, error) {
+    cordova.exec(success, error, "Intercom", "registerForPush", []);
+  },
 
-    displayCarousel: function(carouselId, success, error) {
-        cordova.exec(success, error, 'Intercom', 'displayCarousel', [carouselId]);
-    },
+  sendPushTokenToIntercom: function (token, success, error) {
+    cordova.exec(success, error, "Intercom", "sendPushTokenToIntercom", [
+      token,
+    ]);
+  },
 
-    displayArticle: function(articleId, success, error) {
-        cordova.exec(success, error, 'Intercom', 'displayArticle', [articleId]);
-    },
+  displayCarousel: function (carouselId, success, error) {
+    cordova.exec(success, error, "Intercom", "displayCarousel", [carouselId]);
+  },
 
-    setBottomPadding: function(bottomPadding, success, error) {
-        cordova.exec(success, error, 'Intercom', 'setBottomPadding', [bottomPadding]);
-    }
-}
+  displayArticle: function (articleId, success, error) {
+    cordova.exec(success, error, "Intercom", "displayArticle", [articleId]);
+  },
+
+  setBottomPadding: function (bottomPadding, success, error) {
+    cordova.exec(success, error, "Intercom", "setBottomPadding", [
+      bottomPadding,
+    ]);
+  },
+};
 
 module.exports = intercom;

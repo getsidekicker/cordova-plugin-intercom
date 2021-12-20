@@ -21,7 +21,9 @@
     NSString* apiKey = self.commandDelegate.settings[@"intercom-ios-api-key"] ?: [[NSBundle mainBundle] objectForInfoDictionaryKey:@"IntercomApiKey"];
     NSString* appId = self.commandDelegate.settings[@"intercom-app-id"] ?: [[NSBundle mainBundle] objectForInfoDictionaryKey:@"IntercomAppId"];
 
-    [Intercom setApiKey:apiKey forAppId:appId];
+    if (apiKey.length > 0 && appId.length > 0) {
+      [Intercom setApiKey:apiKey forAppId:appId];
+    }
 }
 
 - (void)registerIdentifiedUser:(CDVInvokedUrlCommand*)command {
@@ -56,6 +58,15 @@
 
 - (void)logout:(CDVInvokedUrlCommand*)command {
     [Intercom logout];
+    [self sendSuccess:command];
+}
+
+- (void)setApiKeyForAppId:(CDVInvokedUrlCommand*)command {
+    NSString *apiKey = command.arguments[0];
+    NSString *appId = command.arguments[1];
+
+    [Intercom setApiKey:apiKey forAppId:appId];
+
     [self sendSuccess:command];
 }
 
@@ -209,6 +220,7 @@
 
 - (void)sendPushTokenToIntercom:(CDVInvokedUrlCommand*)command {
   NSLog(@"[Intercom-Cordova] INFO - sendPushTokenToIntercom called");
+  [self sendSuccess:command];
 }
 
 - (void)displayCarousel:(CDVInvokedUrlCommand*)command {
