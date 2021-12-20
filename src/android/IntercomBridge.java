@@ -60,9 +60,9 @@ public class IntercomBridge extends CordovaPlugin {
             public void run() {
                 // We also initialize intercom here just in case it has died. If Intercom is
                 // already set up, this won't do anything.
-                setUpIntercom();
-
-                Intercom.client().handlePushMessage();
+                if (setUpIntercom()) {
+                    Intercom.client().handlePushMessage();
+                }
             }
         });
     }
@@ -72,7 +72,7 @@ public class IntercomBridge extends CordovaPlugin {
         cordova.getActivity().setIntent(intent);
     }
 
-    private void setUpIntercom() {
+    private boolean setUpIntercom() {
         try {
             Context context = cordova.getActivity().getApplicationContext();
 
@@ -95,12 +95,14 @@ public class IntercomBridge extends CordovaPlugin {
             String appId = preferences.getString("intercom-app-id", "");
             if (apiKey != null && apiKey.length() > 0 && appId != null && appId.length() > 0) {
                 Intercom.initialize(cordova.getActivity().getApplication(), apiKey, appId);
+                return true;
             }
         } catch (Exception e) {
             Log.e("Intercom-Cordova",
                     "ERROR: Something went wrong when initializing Intercom. Have you set your APP_ID and ANDROID_API_KEY?",
                     e);
         }
+        return false;
     }
 
     private String getSenderId(Context context) {
@@ -408,6 +410,13 @@ public class IntercomBridge extends CordovaPlugin {
                 String token = args.optString(0);
                 IntercomPushClient intercomPushClient = new IntercomPushClient();
                 intercomPushClient.sendTokenToIntercom(cordova.getActivity().getApplication(), token);
+                callbackContext.success();
+            }
+        },
+        handlePushMessage {
+            @Override
+            void performAction(JSONArray args, CallbackContext callbackContext, CordovaInterface cordova) {
+                Intercom.client().handlePushMessage();
                 callbackContext.success();
             }
         },
